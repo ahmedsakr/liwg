@@ -1,0 +1,16 @@
+.App{
+  text-align: center;
+}
+
+.App-title {
+  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Paper {
+  padding: 8px;
+  margin: 16px;
+}
+
