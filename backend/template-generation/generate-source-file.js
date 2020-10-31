@@ -1,7 +1,7 @@
 let Handlebars = require('handlebars');
 let fs = require('fs');
-
-const filePath = process.env.TEMPLATE_PATH || __dirname + '/test/'
+const filePath = process.env.TEMPLATE_PATH || __dirname + '/test/';
+const logger = process.env.DEVELOPMENT || false;
 
 function readFile(file) {
     return new Promise((resolve, reject) => {
@@ -33,10 +33,14 @@ exports.convertTemplate = function (template, data, fileType) {
     Promise.all(promises).then(result => {
         let data = JSON.parse(result[0]);
         let template = result[1];
+        if (logger) {
+            console.log('Template ===> ', template);
+            console.log('Data ===> ', data);
+        }
 
         template = Handlebars.compile(template);
         result = template(data);
-        console.log('Conversion Result ===> ', result);
+        if (logger) console.log('Conversion Result ===> ', result);
 
         fs.writeFile(filePath +  'generated-file.' + fileType, result, function (err) {
             if (err) throw err;
