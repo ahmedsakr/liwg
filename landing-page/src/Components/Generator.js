@@ -1,24 +1,23 @@
 import './../App.css';
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from '@material-ui/core';
+import { FaLinkedin } from 'react-icons/fa';
 
 class Generator extends React.Component  {
 
+  render() {
 
-    render() {
-  
-      return (
-        <div>
-            <Button variant="contained" color="primary" onClick={() => this.callLinkedInApi()}>Generate Website</Button>
-        </div>
-      );
-    }
-  
-    callLinkedInApi(){
-      alert("LinkedinLogin");
-    }
-  
+    return (
+      <div>
+          <Button variant="contained" color="primary" endIcon={<FaLinkedin/>} onClick={() => this.callLinkedInApi()}>Generate Website</Button>
+      </div>
+    );
   }
+
+  callLinkedInApi(){
+    alert("LinkedinLogin");
+  }
+}
   
   export default Generator;
   
