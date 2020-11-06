@@ -1,2 +1,17 @@
 let converter = require('../generate-source-file.js');
-converter.convertTemplate('template-html.html', 'data.json', 'html');
+let data = {
+    "name": "Alan",
+    "hometown": "Somewhere, TX",
+    "kids": [
+        {
+            "name": "Jimmy",
+            "age": "12"
+        },
+        {
+            "name": "Sally",
+            "age": "4"
+        }
+    ]
+}
+
+converter.convertTemplate('test-template.js', data);
