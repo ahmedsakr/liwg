@@ -17,32 +17,25 @@ function readFile(file) {
 }
 
 /** convertTemplate() utilizes Handlebar.js to replace placeholders in templates with data,
- *  indicated using {{name}} in the template.
+ *  indicated using {{name}} in the template. The purpose of this function is to replace .js
+ *  template tags with data.
  * 
  * Parameters:
  *  template: String - The template file going to be converted
  *  data: JSON - The data being inserted into the template
- *  fileType: String - The resulting file type (js / html)
  */
-exports.convertTemplate = function (template, data, fileType) {
-    const promises = [
-        readFile(filePath + data),
-        readFile(filePath + template)
-    ];
-
-    Promise.all(promises).then(result => {
-        let data = JSON.parse(result[0]);
-        let template = result[1];
+exports.convertTemplate = function (template, data) {
+    readFile(filePath + template).then(template => { 
         if (logger) {
             console.log('Template ===> ', template);
-            console.log('Data ===> ', data);
+            console.log('Data ===> ', JSON.stringify(data));
         }
 
         template = Handlebars.compile(template);
         result = template(data);
         if (logger) console.log('Conversion Result ===> ', result);
 
-        fs.writeFile(filePath +  'generated-file.' + fileType, result, function (err) {
+        fs.writeFile(filePath + 'generated-file.js', result, function (err) {
             if (err) throw err;
         });
     });
