@@ -1,8 +1,9 @@
 import './App.css';
 import React from 'react';
 import logo from './images/liwg-logo-200x200.png'
-import Generator from './Components/Generator';
+import LinkedInLogin from './Components/LinkedInLogin';
 import { Paper } from '@material-ui/core';
+import TemplateSelect from './Components/TemplateSelect';
 
 class App extends React.Component  {
 
@@ -19,7 +20,9 @@ class App extends React.Component  {
           Praesent lobortis sollicitudin sollicitudin. Sed pharetra sed ligula sit amet gravida. 
           Vestibulum pretium nulla orci, at varius lorem dictum quis.</Paper>
 
-        <Generator></Generator>
+        <TemplateSelect></TemplateSelect>
+
+        <LinkedInLogin></LinkedInLogin>
       </div>
     );
   }
