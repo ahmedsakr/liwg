@@ -21,11 +21,12 @@ function readFile(file) {
  *  template tags with data.
  * 
  * Parameters:
- *  template: String - The template file going to be converted
  *  data: JSON - The data being inserted into the template
+ *  Note: data.template is a required attribue of the JSON object
  */
-exports.convertTemplate = function (template, data) {
-    readFile(filePath + template).then(template => { 
+exports.convertTemplate = function (data) {
+    if (!data.template) console.log('Error: No template provided.')
+    readFile(filePath + data.template).then(template => { 
         if (logger) {
             console.log('Template ===> ', template);
             console.log('Data ===> ', JSON.stringify(data));

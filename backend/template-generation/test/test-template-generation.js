@@ -1,5 +1,6 @@
 let converter = require('../generate-source-file.js');
 let data = {
+    "template": "test-template.js",
     "name": "Alan",
     "hometown": "Somewhere, TX",
     "kids": [
@@ -14,4 +15,4 @@ let data = {
     ]
 }
 
-converter.convertTemplate('test-template.js', data);
+converter.convertTemplate(data);
