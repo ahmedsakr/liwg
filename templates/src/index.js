@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Minimalist from './views/minimalist/view';
+import Minimalist from './views/minimalist';
 
 ReactDOM.render(
   <React.StrictMode>
