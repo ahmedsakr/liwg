@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
-const port = 3000;
+const port = 5000;
 var cors = require('cors');
-
 let converter = require('../template-generation/generate-source-file.js');
 
 app.use(cors());
@@ -14,13 +13,17 @@ app.use(
     })
 )
 
-/**
- * Pass the template name in request.headers.template
- * Example to run the test file: "key: test-template.js"
- */
 app.post('/generate-file', (request, response) => {
-    converter.convertTemplate(request.headers.template, request.body);
-    response.json({ info: 'Node.js, Express, and O-Auth' })
+    converter.convertTemplate(request.body)
+    .then(file => {
+        response.download(file, (err) => {
+            if (err) console.log('Error downloading file: ', err)
+        });
+    })
+    .catch(error => {
+        console.log('Error: ', error);
+        response.json({ error: error })
+    })
 })
 
 app.listen(port, () => {
