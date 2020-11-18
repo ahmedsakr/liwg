@@ -2,21 +2,21 @@ import React from 'react';
 import Profile from './content/Profile';
 import { Grid, withStyles, Divider } from '@material-ui/core';
 import CurrentJob from './content/CurrentJob';
+import Education from './content/Education';
 
 const styles = {
     root: {
         minHeight: "100vh",
         padding: "2em",
-        backgroundColor: 'white'
+        backgroundColor: '#222'
     },
     content: {
-        backgroundColor: '#404040',
         padding: '1rem',
         borderRadius: '10px'
     },
     divider: {
-        margin: "10px 0px",
-        background: 'white'
+        margin: "20px 0px",
+        background: "white"
     }
 }
 
@@ -32,7 +32,10 @@ const Minimalist = (props) => {
 
                     <Divider className={classes.divider} /> 
 
-                    <CurrentJob />
+                    <Grid container item>
+                        <CurrentJob />
+                        <Education />
+                    </Grid>
                 </Grid>
             </Grid>
         </>
