@@ -15,4 +15,10 @@ let data = {
     ]
 }
 
-converter.convertTemplate(data);
+converter.convertTemplate(data)
+.then((file) => {
+    console.log('Wrote converted template to: ', file);
+})
+.catch((error) => {
+    console.log(error);
+});
