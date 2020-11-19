@@ -1,4 +1,4 @@
-let converter = require('../generate-source-file.js');
+let converter = require('../scripts/generate-source-file.js');
 let data = {
     "template": "test-template.js",
     "name": "Alan",

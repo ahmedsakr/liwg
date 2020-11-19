@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 5000;
 var cors = require('cors');
-let converter = require('../template-generation/generate-source-file.js');
+let converter = require('../scripts/generate-source-file.js');
 
 app.use(cors());
 app.use(bodyParser.json());

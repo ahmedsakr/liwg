@@ -1,6 +1,6 @@
 let Handlebars = require('handlebars');
 let fs = require('fs');
-const filePath = process.env.TEMPLATE_PATH || __dirname + '/test/';
+const filePath = process.env.TEMPLATE_PATH || __dirname + '/../test/';
 
 function readFile(file) {
     return new Promise((resolve, reject) => {
