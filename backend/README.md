@@ -22,7 +22,7 @@ Local Setup
 - `node server/index.js`
 - Optional: `DEVELOPMENT=true node server/index.js` for logging.
 ```
-POST to: http://localhost:3000/generate-file
+POST to: http://localhost:5000/generate-file
 BODY: 
 {
     "template": "test-template.js",
