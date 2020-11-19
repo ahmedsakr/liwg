@@ -25,13 +25,17 @@ function readFile(file) {
  */
 exports.convertTemplate = function (data) {
     return new Promise((resolve, reject) => {
-        if (!data.template) reject('No template provided.')
+        if (!data.template) {
+            reject('No template provided.');
+        }
         readFile(filePath + data.template).then(template => { 
             template = Handlebars.compile(template);
             result = template(data);
 
             fs.writeFile(filePath + 'generated-file.js', result, function (err) {
-                if (err) reject(err);
+                if (err) {
+                    reject(err);
+                }
                 resolve(filePath + 'generated-file.js')
             });
         });
