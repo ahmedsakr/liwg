@@ -28,7 +28,8 @@ exports.convertTemplate = function (data) {
         if (!data.template) {
             reject('No template provided.');
         }
-        readFile(filePath + data.template).then(template => { 
+        readFile(filePath + data.template)
+        .then(template => { 
             template = Handlebars.compile(template);
             result = template(data);
 
