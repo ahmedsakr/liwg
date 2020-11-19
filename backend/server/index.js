@@ -24,7 +24,7 @@ app.post('/generate-file', (request, response) => {
     })
     .catch(error => {
         console.log('Error: ', error);
-        response.json({ error: error })
+        response.json({ error: error });
     })
 });
 

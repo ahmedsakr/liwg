@@ -37,7 +37,7 @@ exports.convertTemplate = function (data) {
                 if (err) {
                     reject(err);
                 }
-                resolve(filePath + 'generated-file.js')
+                resolve(filePath + 'generated-file.js');
             });
         });
     });
