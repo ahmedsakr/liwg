@@ -1,4 +1,3 @@
-import './../App.css';
 import React from 'react';
 import { Button } from '@material-ui/core';
 import { FaLinkedin } from 'react-icons/fa';

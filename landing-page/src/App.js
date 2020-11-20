@@ -1,9 +1,30 @@
-import './App.css';
 import React from 'react';
 import logo from './images/liwg-logo-200x200.png'
 import LinkedInLogin from './Components/LinkedInLogin';
 import { Paper } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import flowStates from './FlowStates';
+
+const styles = {
+
+    app: {
+      textAlign: 'center',
+    },
+
+    appHeader: {
+      display: 'block',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+      backgroundColor: '#ffffffe7'
+    },
+
+    paper: {
+      width: '50%',
+      padding: '8px',
+      margin: '16px',
+      display: 'inline-block'
+    },
+};
 
 class App extends React.Component  {
 
@@ -11,7 +32,13 @@ class App extends React.Component  {
     userState : flowStates.SIGN_IN
   }
 
+  componentDidMount(){
+    document.body.style.backgroundColor = '#e0d9cd';
+  }
+
   render() {
+
+    const { classes } = this.props;
 
     var flowContent = null;
 
@@ -20,12 +47,12 @@ class App extends React.Component  {
       case flowStates.SIGN_IN:
         flowContent = 
           <div>
-              <Paper className="Paper" elevation={3}> (Description) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie eleifend quam nec fermentum. 
+              <Paper className={classes.paper} elevation={3}> (Description) Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie eleifend quam nec fermentum. 
               Donec erat nunc, mollis eu ex sit amet, tempor scelerisque nunc. 
               Praesent lobortis sollicitudin sollicitudin. Sed pharetra sed ligula sit amet gravida. 
               Vestibulum pretium nulla orci, at varius lorem dictum quis.</Paper>
 
-              <LinkedInLogin></LinkedInLogin>
+              <LinkedInLogin/>
           </div>
         break;
 
@@ -45,8 +72,8 @@ class App extends React.Component  {
     }
 
     return (
-      <div className="App">
-        <header className="App-header">        
+      <div className={classes.app}>
+        <header className={classes.appHeader}>        
           <img src={logo} alt={''}/>
         </header>
 
@@ -58,4 +85,4 @@ class App extends React.Component  {
 
 }
 
-export default App;
+export default withStyles(styles)(App);

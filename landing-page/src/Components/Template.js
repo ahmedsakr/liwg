@@ -1,4 +1,3 @@
-import './../App.css';
 import React from 'react';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -6,14 +5,25 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = {
+
+    templateCard: {
+        maxWidth: '256px',
+        margin: '16px'
+    },
+};
 
 class Template extends React.Component  {
 
     render() {
 
+        const { classes } = this.props;
+
         return (
             <div>
-                <Card className="TemplateCard">
+                <Card className={classes.templateCard}>
                     <CardMedia> <img src={this.props.image} alt={''} width="96px" height="96px"/> </CardMedia>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
@@ -30,4 +40,4 @@ class Template extends React.Component  {
     }
 }
   
-export default Template;
+export default withStyles(styles)(Template);
