@@ -6,6 +6,7 @@ const cors = require('cors');
 const converter = require('../scripts/generate-source-file.js');
 const liwgFs = require('../scripts/compress-source-files.js');
 const { v4: uuidv4 } = require('uuid');
+var path = require('path');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,17 +18,20 @@ app.use(
 
 app.post('/generate-file', async (request, response) => {
     let dirName = uuidv4();
+    let tempDir = path.join('dist', dirName);
+
     const { body } = request;
     try {
-        await liwgFs.createDirectory('dist/' + dirName);
-        await liwgFs.copyTemplateFiles('./dist/' + dirName + '/' + body.template, '../test/' + body.template);
-        await converter.convertTemplate(body, './dist/' + dirName + '/' + body.template);
-        await liwgFs.compressDirectory('dist/' + dirName, 'dist/' + dirName + '.zip');
-        await liwgFs.removeDirectory('dist/' + dirName);
-        response.download('./dist/' + dirName + '.zip', 'website-template.zip');
+        await liwgFs.createDirectory(tempDir);
+        await liwgFs.copyTemplateFiles(tempDir + '/' + body.template, '../test/' + body.template);
+        await converter.convertTemplate(body, tempDir + '/' + body.template);
+        await liwgFs.compressDirectory(tempDir, tempDir + '.zip');
+        await liwgFs.removeDirectory(tempDir);
     } catch (error) {
         console.log('Error: ', error);
         response.json({ error: error });
+    } finally {
+        response.download('./dist/' + dirName + '.zip', 'website-template.zip');
     }
 });
 
