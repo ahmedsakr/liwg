@@ -23,17 +23,16 @@ function readFile(file) {
  *  data: JSON - The data being inserted into the template
  *  Note: data.template is a required attribue of the JSON object
  */
-exports.convertTemplate = function (data) {
+exports.convertTemplate = function (data, template) {
     return new Promise((resolve, reject) => {
         if (!data.template) {
             reject('No template provided.');
         }
-        readFile(filePath + data.template)
-        .then(template => { 
-            template = Handlebars.compile(template);
-            result = template(data);
-
-            fs.writeFile(filePath + 'generated-file.js', result, function (err) {
+        readFile(template)
+        .then(templateContents => { 
+            templateContents = Handlebars.compile(templateContents);
+            result = templateContents(data);
+            fs.writeFile(template, result, function (err) {
                 if (err) {
                     reject(err);
                 }
