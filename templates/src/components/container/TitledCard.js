@@ -10,7 +10,7 @@ const styles = {
     },
     title: {
         '@media screen and (min-width: 600px)': {
-            writingMode: "tb-rl",
+            writingMode: "vertical-rl",
             transform: "rotate(180deg)",
         },
         fontWeight: "bold",
