@@ -8,7 +8,7 @@ const styles = {
     root: {
         minHeight: "100vh",
         padding: "2em",
-        backgroundColor: '#222'
+        backgroundColor: '#f0f0f0'
     },
     content: {
         padding: '1rem',
@@ -16,7 +16,7 @@ const styles = {
     },
     divider: {
         margin: "20px 0px",
-        background: "white"
+        background: "#222"
     }
 }
 

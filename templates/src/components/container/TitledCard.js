@@ -9,12 +9,14 @@ const styles = {
         display: 'flex'
     },
     title: {
-        writingMode: "tb-rl",
-        transform: "rotate(180deg)",
+        '@media screen and (min-width: 600px)': {
+            writingMode: "tb-rl",
+            transform: "rotate(180deg)",
+        },
         fontWeight: "bold",
         fontSize: "1.5rem",
         textAlign: "center",
-        color: "white",
+        color: "#222",
         margin: 0
     },
     companyPicture: {
