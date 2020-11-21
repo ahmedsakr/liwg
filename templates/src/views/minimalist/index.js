@@ -60,7 +60,7 @@ const Minimalist = (props) => {
                     </Grid>
                 </Hidden>
 
-                <Grid container direction="column" sm={8} md={6} className={classes.content}>
+                <Grid container direction="column" justify="center" sm={8} md={6} className={classes.content}>
                     <Profile />
 
                     <Divider className={classes.divider} /> 
