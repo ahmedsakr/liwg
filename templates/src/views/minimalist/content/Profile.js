@@ -35,10 +35,10 @@ const Profile = (props) => {
             <Grid container>
                 <CardMedia
                     className={classes.profilePicture}
-                    image="https://media-exp1.licdn.com/dms/image/C5603AQGfC_pH2J7Czg/profile-displayphoto-shrink_400_400/0?e=1611187200&v=beta&t=_iFEKj1Ees47yb42OGO2xPBITQT1fE6J8rsCNiVyHNs" />
+                    image={props.picture} />
                 <Grid item className={classes.profileName}>
-                    <h1>Josh</h1>
-                    <p>Campitelli</p>
+                    <h1>{props.firstName}</h1>
+                    <p>{props.lastName}</p>
                 </Grid>
             </Grid>   
         </Card>
