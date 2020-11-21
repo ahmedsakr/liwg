@@ -56,6 +56,7 @@ const TitledCard = (props) => {
             </Grid>
             <Grid item sm={5} className={classes.grid}>
                 <img
+                    alt={props.title}
                     className={classes.companyPicture}
                     src={props.image} />
                 
