@@ -51,7 +51,7 @@ const TitledCard = (props) => {
 
     return (
         <>
-            <Grid container justify="center" sm={1}>
+            <Grid container justify="center" item sm={1}>
                 <p className={classes.title}>{props.title}</p>
             </Grid>
             <Grid item sm={5} className={classes.grid}>

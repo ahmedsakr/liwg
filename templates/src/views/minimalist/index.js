@@ -53,14 +53,14 @@ const Minimalist = (props) => {
         <>
             <Grid container className={classes.root}>
                 <Hidden smDown>
-                    <Grid container direction="column" alignItems="center" justify="center" sm={4} className={classes.sideContent}>
+                    <Grid item container direction="column" alignItems="center" justify="center" sm={4} className={classes.sideContent}>
                         <h1>Thanks for dropping by.</h1>
                         <h3>Let's get to know each other.</h3>
                         <p>Connect on LinkedIn <LinkedIn  /></p>
                     </Grid>
                 </Hidden>
 
-                <Grid container direction="column" justify="center" sm={8} md={6} className={classes.content}>
+                <Grid item container direction="column" justify="center" sm={8} md={6} className={classes.content}>
                     <Profile />
 
                     <Divider className={classes.divider} /> 
