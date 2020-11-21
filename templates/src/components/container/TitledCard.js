@@ -27,7 +27,7 @@ const styles = {
         padding: '5px 0px',
         bottom: '0px',
         width: '100%',
-        minHeight: '40%',
+        minHeight: '30%',
         margin: 0,
         background: 'rgba(0,0,0,0.5)',
         color: 'white',
