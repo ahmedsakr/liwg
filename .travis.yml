@@ -13,9 +13,10 @@ before_install:
 install:
 - npm install --only=dev
 beforescript:
-- chmod 600 deploy && mv deploy ~/.ssh/idrsa
+- chmod 600 deploy && mv deploy ~/.ssh/id_rsa
 scripts:
 - cd landing-page
+- npm install
 - npm run build
 after_success:
 - ls
