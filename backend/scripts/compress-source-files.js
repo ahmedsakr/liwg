@@ -6,14 +6,14 @@ var archiver = require('archiver');
 var fs = require('fs');
 var rimraf = require("rimraf");
 
-exports.createDistDirectory = function () {
+function createDistDirectory() {
     let dir = './test/dist';
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
 }
 
-exports.copyTemplateFiles = function (dirName, template) {
+function copyTemplateFiles(dirName, template) {
     return new Promise((resolve, reject) => {
         fs.copyFile(template, dirName, (error) => {
             if (error) {
@@ -25,7 +25,7 @@ exports.copyTemplateFiles = function (dirName, template) {
     });
 }
 
-exports.removeDirectory = function (dirName) {
+function removeDirectory(dirName) {
     return new Promise((resolve, reject) => {
         rimraf(dirName, (error) => {
             if (error) {
@@ -37,7 +37,7 @@ exports.removeDirectory = function (dirName) {
     });
 }
 
-exports.createDirectory = function (dirName) {
+function createDirectory(dirName) {
     return new Promise((resolve, reject) => {
         if (!fs.existsSync(dirName)) {
             fs.mkdirSync(dirName)
@@ -49,7 +49,7 @@ exports.createDirectory = function (dirName) {
 
 }
 
-exports.compressDirectory = function (src, out) {
+function compressDirectory(src, out) {
     const archive = archiver('zip', { zlib: { level: 9 } });
     const stream = fs.createWriteStream(out);
 
@@ -63,3 +63,9 @@ exports.compressDirectory = function (src, out) {
         archive.finalize();
     });
 }
+
+exports.createDistDirectory = createDistDirectory;
+exports.copyTemplateFiles = copyTemplateFiles;
+exports.removeDirectory = removeDirectory;
+exports.createDirectory = createDirectory;
+exports.compressDirectory = compressDirectory;
