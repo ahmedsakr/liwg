@@ -60,23 +60,23 @@ const Minimalist = () => {
 
                 <Grid item container direction="column" justify="center" sm={8} md={6} className={classes.content}>
                     <Profile
-                        firstName="Josh"
-                        lastName="Campitelli"
-                        picture="https://media-exp1.licdn.com/dms/image/C5603AQGfC_pH2J7Czg/profile-displayphoto-shrink_400_400/0?e=1611187200&v=beta&t=_iFEKj1Ees47yb42OGO2xPBITQT1fE6J8rsCNiVyHNs" />
+                        firstName="{{ person.firstName }}"
+                        lastName="{{ person.lastName }}"
+                        picture="{{ person.profilePicture }}" />
 
                     <Divider className={classes.divider} /> 
 
                     <Grid container item>
                         <TitledCard
                             title="CURRENT JOB"
-                            image="https://media-exp1.licdn.com/dms/image/C560BAQFAwMkfPnYR-g/company-logo_200_200/0?e=1613606400&v=beta&t=qKigYfEUdyaae2xCleg7ERAQ1x7v852K7KU2gFdnEFg"
-                            overlayTitle="Software Application Developer"
-                            overlaySubtitle="I-Sight Software by Customer Expressions" />
+                            image="{{ person.job.companyPicture }}"
+                            overlayTitle="{{ person.job.title }}"
+                            overlaySubtitle="{{ person.job.companyName }}" />
                         <TitledCard
                             title="EDUCATION"
-                            image="https://media-exp1.licdn.com/dms/image/C4E0BAQH8Hd0st7TvEg/company-logo_200_200/0?e=1613606400&v=beta&t=UW4UV-a_sCpsp9-579VNWI4ZHh5zMQsOiDUwoJwrpR8"
-                            overlayTitle="Bachelor of Engineering, Software"
-                            overlaySubtitle="Carleton University" />
+                            image="{{ person.education.institutePicture }}"
+                            overlayTitle="{{ person.education.degreeTitle }}"
+                            overlaySubtitle="{{ person.education.instituteName }}" />
                     </Grid>
                 </Grid>
             </Grid>
