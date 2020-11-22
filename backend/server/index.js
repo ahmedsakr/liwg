@@ -22,16 +22,18 @@ app.post('/generate-file', async (request, response) => {
 
     const { body } = request;
     try {
+        await liwgFs.createDistDirectory();
         await liwgFs.createDirectory(tempDir);
         await liwgFs.copyTemplateFiles(tempDir + '/' + body.template, '../test/' + body.template);
         await converter.convertTemplate(body, tempDir + '/' + body.template);
         await liwgFs.compressDirectory(tempDir, tempDir + '.zip');
-        await liwgFs.removeDirectory(tempDir);
     } catch (error) {
         console.log('Error: ', error);
         response.json({ error: error });
     } finally {
+        await liwgFs.removeDirectory(tempDir);
         response.download('./dist/' + dirName + '.zip', 'website-template.zip');
+        await liwgFs.removeDirectory(tempDir + '.zip');
     }
 });
 
