@@ -4,9 +4,9 @@ const app = express();
 const port = 5000;
 const cors = require('cors');
 const converter = require('../scripts/generate-source-file.js');
-const liwgFs = require('../scripts/compress-source-files.js');
+const liwgFs = require('../scripts/liwg-fs.js');
 const { v4: uuidv4 } = require('uuid');
-var path = require('path');
+const path = require('path');
 
 app.use(cors());
 app.use(bodyParser.json());
