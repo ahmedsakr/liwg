@@ -7,7 +7,7 @@ var fs = require('fs');
 var rimraf = require("rimraf");
 
 function createDistDirectory() {
-    let dir = './test/dist';
+    let dir = './dist';
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
