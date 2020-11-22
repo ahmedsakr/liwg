@@ -1,10 +1,10 @@
 import React from 'react';
 import Profile from './content/Profile';
-import { Grid, withStyles, Divider, Hidden } from '@material-ui/core';
+import { Grid, makeStyles, Divider, Hidden } from '@material-ui/core';
 import { LinkedIn } from '@material-ui/icons';
 import TitledCard from '../../components/container/TitledCard';
 
-const styles = {
+const styles = makeStyles({
     root: {
         minHeight: "100vh",
         backgroundColor: '#f0f0f0'
@@ -42,11 +42,10 @@ const styles = {
         margin: "20px 0px",
         background: "#222"
     }
-}
+});
 
-const Minimalist = (props) => {
-
-    const { classes } = props;
+const Minimalist = () => {
+    const classes = styles();
 
     return (
         <>
@@ -85,4 +84,4 @@ const Minimalist = (props) => {
     )
 };
 
-export default withStyles(styles)(Minimalist);
+export default Minimalist;

@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid, withStyles } from '@material-ui/core';
+import { Grid, makeStyles } from '@material-ui/core';
 
-const styles = {
+const styles = makeStyles({
     grid: {
         position: 'relative',
         border: 'solid 2px gray',
@@ -43,11 +43,11 @@ const styles = {
             color: 'white'
         }
     }
-};
+});
 
 const TitledCard = (props) => {
 
-    const { classes } = props;
+    const classes  = styles();
 
     return (
         <>
@@ -69,4 +69,4 @@ const TitledCard = (props) => {
     )
 };
 
-export default withStyles(styles)(TitledCard);
+export default TitledCard;

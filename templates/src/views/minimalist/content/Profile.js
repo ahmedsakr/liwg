@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, Grid, CardMedia, withStyles } from '@material-ui/core';
+import { Card, Grid, CardMedia, makeStyles } from '@material-ui/core';
 
-const styles = {
-    profilePicture: {
+const styles = makeStyles({
+    profilePicture:{
         width: "200px",
         height: "200px"
     },
@@ -12,6 +12,7 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         padding: '3rem',
+        
         '& > *': {
             margin: 0
         },
@@ -24,18 +25,19 @@ const styles = {
             color: 'gray'
         }
     }
-}
+});
 
 const Profile = (props) => {
 
-    const { classes } = props;
+    const classes = styles();
 
     return (
         <Card>
             <Grid container>
                 <CardMedia
                     className={classes.profilePicture}
-                    image={props.picture} />
+                    image={props.picture}
+                    style={{ justifyContent: '' }} />
                 <Grid item className={classes.profileName}>
                     <h1>{props.firstName}</h1>
                     <p>{props.lastName}</p>
@@ -45,4 +47,4 @@ const Profile = (props) => {
     );
 }
 
-export default withStyles(styles)(Profile);
+export default Profile;
