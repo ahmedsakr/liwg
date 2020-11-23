@@ -6,7 +6,7 @@ node_js:
   - 12.18.0
 addons:
   ssh_known_hosts:
-    - $REMOTE_HOST
+    - 134.122.39.75
 
 branches:
   only:
@@ -19,6 +19,7 @@ script:
 # - cd scripts
 # - chmod 777 -R
 # - sh server_deploy.sh
+- echo $TRAVIS_BUILD_DIR
 
 deploy:
   - provider: script
