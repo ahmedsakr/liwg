@@ -16,12 +16,12 @@ branches:
 script:
 - openssl aes-256-cbc -K $encrypted_b0d51b9ff91b_key -iv $encrypted_b0d51b9ff91b_iv -in deploy.enc -out deploy -d
 - chmod 600 deploy && mv deploy ~/.ssh/id_rsa
-# - cd scripts
+- cd scripts
 # - sh server_deploy.sh
 
 deploy:
   - provider: script
     skip_cleanup: true
-    script: scripts/server_deploy
+    script: server_deploy
     on:
       all_branches: true
