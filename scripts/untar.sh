@@ -2,7 +2,7 @@
 echo 'Running untar.sh script'
 set -x
 # export NODE_ENV=production
-cd $REMOTE_APP_DIR && \
+cd /var/app/liwg && \
 tar zxvf package.tgz -C . && \
 ls
 cd build
