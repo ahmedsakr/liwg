@@ -20,6 +20,5 @@ deploy:
     skip_cleanup: true
     script: scripts/deploy
     on:
-      # all_branches: true
-      branch: main, ci_cd_liwg
+      all_branches: true
     
