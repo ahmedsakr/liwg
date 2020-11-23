@@ -11,7 +11,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "DEVELOPMENT=true node template-generation/test/test-template-generation.js"
+    "test": "DEVELOPMENT=true node template-generation/test/test-template-generation.js",
+    "install":"npm install",
+    "start": "node server/index.js",
+    "backend": "npm run install && npm run start"
   },
   "author": "",
   "license": "ISC"
