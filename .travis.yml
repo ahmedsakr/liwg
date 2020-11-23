@@ -24,7 +24,7 @@ script:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: scripts/server_deploy.sh
+    script: sh scripts/server_deploy.sh
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH =~ ^(main|ci_cd_liwg)$
