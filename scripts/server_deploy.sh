@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env sh
 
 set -x
 tar -czf package.tgz ../code && \

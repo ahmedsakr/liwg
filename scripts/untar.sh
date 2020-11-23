@@ -1,4 +1,4 @@
-#!/bin/bash -e
+#!/usr/bin/env sh
 set -x
 cd /var/app/liwg && \
 tar zxvf package.tgz -C . && \
