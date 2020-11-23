@@ -1,9 +1,8 @@
 language: node
 
-sudo: required
 dist: xenial
 
-nodejs:
+node_js:
   - 12.18.0
 addons:
   ssh_known_hosts:
@@ -13,8 +12,8 @@ branches:
   only:
   - main
   - ci_cd_liwg
-  
-scripts:
+
+script:
 - openssl aes-256-cbc -K $encrypted_b0d51b9ff91b_key -iv $encrypted_b0d51b9ff91b_iv -in deploy.enc -out deploy -d
 - chmod 600 deploy && mv deploy ~/.ssh/id_rsa
 # - cd scripts
