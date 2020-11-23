@@ -18,7 +18,8 @@ scripts:
 - cd landing-page
 - npm install
 - npm run build
+- cd ..
 after_success:
 - ls
-- "../scripts/deploy.sh"
+# - "../scripts/deploy.sh"
 
