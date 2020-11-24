@@ -19,9 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prodStart": "PORT=80 react-scripts start",
     "install": "npm install",
-    "frontend": "npm run install && npm run prodStart"
+    "frontend": "npm run install && npm run start"
   },
   "eslintConfig": {
     "extends": [
