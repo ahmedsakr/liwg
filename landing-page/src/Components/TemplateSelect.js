@@ -3,6 +3,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import Template from './Template';
 import logo from './../images/liwg-logo-200x200.png'
+import { Button } from '@material-ui/core';
+import { FaLinkedin } from 'react-icons/fa';
 
 class TemplateSelect extends React.Component  {
 
@@ -38,6 +40,8 @@ class TemplateSelect extends React.Component  {
                         />
                     </RadioGroup>
                 </FormControl>
+
+                <Button variant="contained" color="primary" startIcon={<FaLinkedin/>} href={"/generate?template=" + this.state.selectedTemplate}>Generate Website</Button>
             </div>
 
         );

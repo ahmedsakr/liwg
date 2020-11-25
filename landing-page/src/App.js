@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './images/liwg-logo-200x200.png'
 import LinkedInLogin from './Components/LinkedInLogin';
+import TemplateSelect from './Components/TemplateSelect'
 import { Paper } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import flowStates from './FlowStates';
@@ -29,7 +30,7 @@ const styles = {
 class App extends React.Component  {
 
   state = {
-    userState : flowStates.SIGN_IN
+    userState : flowStates.AUTH_SUCCESS
   }
 
   componentDidMount(){
@@ -60,11 +61,12 @@ class App extends React.Component  {
         flowContent = 
           <div>
             <h2>There was a problem signing you in. Please try again.</h2>
-            <LinkedInLogin></LinkedInLogin>
+            <LinkedInLogin/>
           </div>
         break;
       case flowStates.AUTH_SUCCESS:
         //Template selection
+        flowContent = <TemplateSelect/>
         break;
 
       default:
