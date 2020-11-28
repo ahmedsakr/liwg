@@ -1,6 +1,5 @@
 let Handlebars = require('handlebars');
 let fs = require('fs');
-const filePath = process.env.TEMPLATE_PATH || __dirname + '/../test/';
 
 function readFile(file) {
     return new Promise((resolve, reject) => {
@@ -36,7 +35,8 @@ exports.convertTemplate = function (data, template) {
                 if (err) {
                     reject(err);
                 }
-                resolve(filePath + 'generated-file.js');
+                console.log()
+                resolve(template);
             });
         });
     });

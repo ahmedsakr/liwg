@@ -15,7 +15,7 @@ let data = {
     ]
 }
 
-converter.convertTemplate(data)
+converter.convertTemplate(data, 'test/test-template.js')
 .then((file) => {
     console.log('Wrote converted template to: ', file);
 })
