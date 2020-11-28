@@ -24,7 +24,7 @@ function readFile(file) {
  */
 exports.convertTemplate = function (data, template) {
     return new Promise((resolve, reject) => {
-        if (!data.template) {
+        if (!template) {
             reject('No template provided.');
         }
         readFile(template)
