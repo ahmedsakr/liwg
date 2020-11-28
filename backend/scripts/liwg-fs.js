@@ -9,7 +9,7 @@ var ncp = require('ncp').ncp;
 ncp.limit = 16;
 
 function createDistDirectory() {
-    let dir = './dist';
+    let dir = __dirname + '/../server/dist';
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir);
     }
