@@ -18,21 +18,21 @@ app.use(
 
 app.post('/generate-file', async (request, response) => {
     let dirName = uuidv4();
-    let tempDir = path.join('dist', dirName);
+    let tempDir = path.join(__dirname, 'dist', dirName);
 
     const { body } = request;
     try {
         await liwgFs.createDistDirectory();
         await liwgFs.createDirectory(tempDir);
-        await liwgFs.copyTemplateFiles(tempDir + '/' + body.template, '../test/' + body.template);
-        await converter.convertTemplate(body, tempDir + '/' + body.template);
+        await liwgFs.copyTemplateFiles(__dirname + '/../../templates', tempDir);
+        await converter.convertTemplate(body, tempDir + '/src/views/minimalist/index.js');
         await liwgFs.compressDirectory(tempDir, tempDir + '.zip');
     } catch (error) {
         console.log('Error: ', error);
         response.json({ error: error });
     } finally {
         await liwgFs.removeDirectory(tempDir);
-        response.download('./dist/' + dirName + '.zip', 'website-template.zip');
+        response.download(tempDir + '.zip', 'website-template.zip');
         await liwgFs.removeDirectory(tempDir + '.zip');
     }
 });
