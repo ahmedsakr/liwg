@@ -5,6 +5,8 @@
 var archiver = require('archiver');
 var fs = require('fs');
 var rimraf = require("rimraf");
+var ncp = require('ncp').ncp;
+ncp.limit = 16;
 
 function createDistDirectory() {
     let dir = './dist';
@@ -13,9 +15,9 @@ function createDistDirectory() {
     }
 }
 
-function copyTemplateFiles(dirName, template) {
+function copyTemplateFiles(source, destination) {
     return new Promise((resolve, reject) => {
-        fs.copyFile(template, dirName, (error) => {
+        ncp(source, destination, function (error) {
             if (error) {
                 reject(error)
             } else {
