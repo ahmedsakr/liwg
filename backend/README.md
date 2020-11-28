@@ -17,10 +17,10 @@ Local Setup
 **Note:** This will generate file `test/generated-file.js`
 
 
-### Testing the Conversion / Compression / Download of Templates through the `express` server using _Postman_ 📪:**
-`cd backend`
-`npm i`
-`node server/index.js`
+### Testing the Conversion / Compression / Download of Templates through the `express` server using _Postman_ 📪:
+- `cd backend`
+- `npm i`
+- `node server/index.js`
 ```
 POST to: http://localhost:5000/generate-file
 BODY: 
