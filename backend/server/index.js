@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 5000;
@@ -9,7 +10,17 @@ const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 
 app.use(cors());
+//app.set('trust proxy', 1) // trust first proxy
+app.use(require('express-session')({
+    secret: 'lmao',
+    resave: false,
+    saveUninitialized: true,
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(bodyParser.json());
+app.use('/auth', require('./auth'));
+app.use('/data', require('./data'));
 app.use(
     bodyParser.urlencoded({
         extended: true,
