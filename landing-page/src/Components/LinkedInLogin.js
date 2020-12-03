@@ -4,8 +4,6 @@ import { FaLinkedin } from 'react-icons/fa';
 
 class LinkedInLogin extends React.Component  {
 
-
-
   render() {
 
     return (
