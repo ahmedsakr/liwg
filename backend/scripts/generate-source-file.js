@@ -1,5 +1,7 @@
 let Handlebars = require('handlebars');
 let fs = require('fs');
+const { exec } = require("child_process");
+const ANALYTICS = process.env.ANALYTICS || false;
 
 function readFile(file) {
     return new Promise((resolve, reject) => {
@@ -23,6 +25,7 @@ function readFile(file) {
  *  Note: data.template is a required attribue of the JSON object
  */
 exports.convertTemplate = function (data, template) {
+    let startTime = Date.now();
     return new Promise((resolve, reject) => {
         if (!template) {
             reject('No template provided.');
@@ -35,9 +38,27 @@ exports.convertTemplate = function (data, template) {
                 if (err) {
                     reject(err);
                 }
-                console.log()
+                if (ANALYTICS) {
+                    console.log('Convert template took: ', (Date.now() - startTime) / 1000);
+                }
                 resolve(template);
             });
+        });
+    });
+}
+
+exports.generateStaticHTML = function (dirName) {
+    let startTime = Date.now();
+    return new Promise((resolve, reject) => {
+        exec(`cd ${dirName} && npm i && npm run build`, (error, stdout) => {
+            if (error) {
+                reject(error);
+            } else {
+                if (ANALYTICS) {
+                    console.log('Generating HTML took: ', (Date.now() - startTime) / 1000);
+                }
+                resolve(stdout);
+            }
         });
     });
 }
