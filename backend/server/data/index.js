@@ -1,6 +1,9 @@
-const passport = require('passport');
 const router = require('express').Router();
+const passport = require('passport');
 
-router.get('/linkedin', passport.authenticate('linkedin', require('./linkedin/profile')));
+// All /data routes are privileged and require an active session
+router.use(require('../auth').verifyLogin);
+
+router.use('/linkedin', require('./linkedin/profile'));
 
 module.exports = router;
