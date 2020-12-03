@@ -9,20 +9,19 @@ const liwgFs = require('../scripts/liwg-fs.js');
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 
-app.use(cors());
+app.use(cors({ origin: "http://127.0.0.1:3000" }));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(express.urlencoded({ extended: false, }));
 app.use(require('cookie-parser')());
 app.use(require('express-session')({
-    secret: 'lmao',
+    secret: 'my super amazing secret',
     resave: false,
     saveUninitialized: false
 }));
 
-//app.set('trust proxy', 1) // trust first proxy
-
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
