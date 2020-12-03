@@ -21,18 +21,30 @@ app.post('/generate-file', async (request, response) => {
     let tempDir = path.join(__dirname, 'dist', dirName);
 
     const { body } = request;
+    const { mode } = body;
+
+    if (!mode) { 
+        return response.send({ error: 'No mode selected (html/react)' });
+    }
+
     try {
         await liwgFs.createDistDirectory();
         await liwgFs.createDirectory(tempDir);
         await liwgFs.copyTemplateFiles(__dirname + '/../../templates', tempDir);
         await converter.convertTemplate(body, tempDir + '/src/views/minimalist/index.js');
-        await liwgFs.compressDirectory(tempDir, tempDir + '.zip');
+
+        if (mode === 'html') {
+            await converter.generateStaticHTML(tempDir);
+            await liwgFs.compressDirectory(tempDir + '/build', tempDir + '.zip');
+        } else {
+            await liwgFs.compressDirectory(tempDir, tempDir + '.zip');
+        }
     } catch (error) {
-        console.log('Error: ', error);
-        response.json({ error: error });
+        console.log('Internal Server Error: ', error);
+        return response.send({ error: error });
     } finally {
-        await liwgFs.removeDirectory(tempDir);
         response.download(tempDir + '.zip', 'website-template.zip');
+        await liwgFs.removeDirectory(tempDir);
         await liwgFs.removeDirectory(tempDir + '.zip');
     }
 });
