@@ -11,7 +11,7 @@ class LinkedInLogin extends React.Component  {
     return (
       <div>
         <Button variant="contained" color="primary" startIcon={<FaLinkedin/>} href="http://localhost:5000/auth/linkedin/login">Sign in with LinkedIn</Button>
-      </div>  
+      </div>
     );
   }
 }
