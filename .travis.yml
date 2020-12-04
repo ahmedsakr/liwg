@@ -9,8 +9,7 @@ branches:
   - main
   - ci_cd_liwg
 script:
-- openssl aes-256-cbc -K $encrypted_b0d51b9ff91b_key -iv $encrypted_b0d51b9ff91b_iv
-  -in deploy.enc -out deploy -d
+- openssl aes-256-cbc -K $encrypted_b0d51b9ff91b_key -iv $encrypted_b0d51b9ff91b_iv -in deploy.enc -out deploy -d
 - chmod 600 deploy && mv deploy ~/.ssh/id_rsa
 deploy:
 - provider: script
@@ -19,6 +18,3 @@ deploy:
   on:
     all_branches: true
     condition: "$TRAVIS_BRANCH =~ ^(main|ci_cd_liwg)$"
-before_install:
-- openssl aes-256-cbc -K $encrypted_b0d51b9ff91b_key -iv $encrypted_b0d51b9ff91b_iv
-  -in deploy.enc -out deploy -d
