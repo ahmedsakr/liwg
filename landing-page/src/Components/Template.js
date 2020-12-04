@@ -24,7 +24,9 @@ const Template = (props) =>  {
     return (
         <div>
             <Card className={classes.templateCard}>
-                <CardMedia> <img src={props.image} alt={''} width="96px" height="96px"/> </CardMedia>
+                <CardMedia> 
+                    <img src={props.image} alt={''} width="96px" height="96px"/> 
+                </CardMedia>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.name}
