@@ -1,9 +1,7 @@
 language: node
 
-dist: xenial
-
 node_js:
-  - 12.18.0
+  - 14.15.1
 addons:
   ssh_known_hosts:
     - 134.122.39.75
