@@ -19,7 +19,11 @@ passport.use(new LinkedInStrategy({
     clientSecret: environment_variable('CLIENT_SECRET'), 
     callbackURL: environment_variable('LINKEDIN_CALLBACK'),
     scope: ['r_emailaddress', 'r_liteprofile'],
-}, ( access, refresh, profile, done) => done(null, profile)));
+    passReqToCallback: true,
+}, ( req, access, refresh, profile, done) => {
+    req.session.accessToken = access;
+    return done(null, profile);
+}));
 
 // Redirects the user to the LinkedIn login portal so we can activate
 // their session.
