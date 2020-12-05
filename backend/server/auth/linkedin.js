@@ -2,10 +2,22 @@ const router = require('express').Router();
 const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 
+/*
+ * Exit if environment variable is missing.
+ */
+const environment_variable = (env) => {
+    if (!process.env[env]) {
+        console.log(`'${env}' environment variable is missing!`);
+        process.exit(1);
+    }
+
+    return process.env[env];
+} 
+
 passport.use(new LinkedInStrategy({
-    clientID: '78c63g5t25dr9l',
-    clientSecret: 'HEi8Tg1dxfJscn4d', 
-    callbackURL: 'http://127.0.0.1:5000/auth/linkedin/callback',
+    clientID: environment_variable('CLIENT_ID'),
+    clientSecret: environment_variable('CLIENT_SECRET'), 
+    callbackURL: environment_variable('LINKEDIN_CALLBACK'),
     scope: ['r_emailaddress', 'r_liteprofile'],
 }, ( access, refresh, profile, done) => done(null, profile)));
 
