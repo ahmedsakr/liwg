@@ -29,8 +29,8 @@ router.get('/login', passport.authenticate('linkedin'));
 // the user.
 router.get('/callback',
     passport.authenticate('linkedin', {
-        successRedirect: 'http://127.0.0.1:3000',
-        failureRedirect: 'http://127.0.0.1:3000/lmao',
+        successRedirect: environment_variable('LINKEDIN_SUCCESS'),
+        failureRedirect: environment_variable('LINKEDIN_FAILED'),
     })
 );
 
