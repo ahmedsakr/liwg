@@ -2,36 +2,34 @@ import React from 'react';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import Template from './Template';
-import logo from './../images/liwg-logo-200x200.png'
+import logo from './../images/liwg-logo-200x200.png';
 
-class TemplateSelect extends React.Component  {
-
+class TemplateSelect extends React.Component {
     state = {
-        selectedTemplate : 0
-    }
+        selectedTemplate: 0,
+    };
 
     render() {
-
         return (
             <div>
                 <h2>Templates</h2>
 
                 <FormControl component="fieldset">
                     <RadioGroup row onChange={(event) => this.handleChange(event)}>
-                        <Template 
-                            value="1" 
-                            name="Template 1" 
+                        <Template
+                            value="1"
+                            name="Template 1"
                             image={logo}
                             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie eleifend quam nec fermentum."
                         />
-                        <Template 
-                            value="2" 
-                            name="Template 2" 
+                        <Template
+                            value="2"
+                            name="Template 2"
                             image={logo}
                             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie eleifend quam nec fermentum."
                         />
-                        <Template 
-                            value="3" 
+                        <Template
+                            value="3"
                             name="Template 3"
                             image={logo}
                             description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed molestie eleifend quam nec fermentum."
@@ -39,14 +37,12 @@ class TemplateSelect extends React.Component  {
                     </RadioGroup>
                 </FormControl>
             </div>
-
         );
     }
 
-    handleChange(event){
-        this.setState({selectedTemplate : parseInt(event.target.value)});
+    handleChange(event) {
+        this.setState({ selectedTemplate: parseInt(event.target.value) });
     }
-
 }
-  
+
 export default TemplateSelect;

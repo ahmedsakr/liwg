@@ -1,29 +1,29 @@
-Backend
-===
+# Backend
 
-This is where the backend logic of LIWG will live, including the LinkedIn API, 
+This is where the backend logic of LIWG will live, including the LinkedIn API,
 express.js server, and template placeholder replacement and generation.
 
-Local Setup
-===
+# Local Setup
 
 ### Testing the conversion of templates to `.js` files:
 
-**Direct testing of `convertTemplate` function:** 
-- `cd backend`
-- `npm i`
-- `npm test`
+**Direct testing of `convertTemplate` function:**
+
+-   `cd backend`
+-   `npm i`
+-   `npm test`
 
 **Note:** This will generate file `test/generated-file.js`
 
-
 ### Testing the Conversion / Compression / Download of Templates through the `express` server using _Postman_ 📪:
-- `cd backend`
-- `npm i`
-- `node server/index.js`
+
+-   `cd backend`
+-   `npm i`
+-   `node server/index.js`
+
 ```
 POST to: http://localhost:5000/generate-file
-BODY: 
+BODY:
 {
     "template": "test-template.js",
     "person": {
@@ -43,6 +43,7 @@ BODY:
     }
 }
 ```
+
 **Note:** response contains zipped React Template, save template:
 
 <img width="230" alt="Screen Shot 2020-11-27 at 8 43 37 PM" src="https://user-images.githubusercontent.com/24516220/100491420-523e5380-30f1-11eb-8e8f-689c991c478c.png">

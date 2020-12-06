@@ -6,21 +6,21 @@ const styles = makeStyles({
         position: 'relative',
         border: 'solid 2px gray',
         borderRadius: '6px',
-        display: 'flex'
+        display: 'flex',
     },
     title: {
         '@media screen and (min-width: 600px)': {
-            writingMode: "vertical-rl",
-            transform: "rotate(180deg)",
+            writingMode: 'vertical-rl',
+            transform: 'rotate(180deg)',
         },
-        fontWeight: "bold",
-        fontSize: "1.5rem",
-        textAlign: "center",
-        color: "#222",
-        margin: 0
+        fontWeight: 'bold',
+        fontSize: '1.5rem',
+        textAlign: 'center',
+        color: '#222',
+        margin: 0,
     },
     companyPicture: {
-        width: "100%",
+        width: '100%',
     },
     job: {
         position: 'absolute',
@@ -36,18 +36,17 @@ const styles = makeStyles({
             margin: 0,
             padding: '0rem 1rem',
             fontSize: '0.75rem',
-            color: '#CCC'
+            color: '#CCC',
         },
         '& > p:first-child': {
             fontSize: '1rem',
-            color: 'white'
-        }
-    }
+            color: 'white',
+        },
+    },
 });
 
 const TitledCard = (props) => {
-
-    const classes  = styles();
+    const classes = styles();
 
     return (
         <>
@@ -55,18 +54,15 @@ const TitledCard = (props) => {
                 <p className={classes.title}>{props.title}</p>
             </Grid>
             <Grid item sm={5} className={classes.grid}>
-                <img
-                    alt={props.title}
-                    className={classes.companyPicture}
-                    src={props.image} />
-                
+                <img alt={props.title} className={classes.companyPicture} src={props.image} />
+
                 <Grid item className={classes.job}>
                     <p>{props.overlayTitle}</p>
                     <p>{props.overlaySubtitle}</p>
                 </Grid>
             </Grid>
         </>
-    )
+    );
 };
 
 export default TitledCard;
