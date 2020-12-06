@@ -4,9 +4,8 @@ import './index.css';
 import Minimalist from './views/minimalist';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Minimalist />
-  </React.StrictMode>,
-  document.getElementById('root')
+   <React.StrictMode>
+      <Minimalist />
+   </React.StrictMode>,
+   document.getElementById('root')
 );
-

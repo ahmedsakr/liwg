@@ -8,36 +8,40 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
-
-    templateCard: {
-        maxWidth: '256px',
-        margin: '16px'
-    },
+   templateCard: {
+      maxWidth: '256px',
+      margin: '16px',
+   },
 };
 
-class Template extends React.Component  {
+class Template extends React.Component {
+   render() {
+      const { classes } = this.props;
 
-    render() {
-
-        const { classes } = this.props;
-
-        return (
-            <div>
-                <Card className={classes.templateCard}>
-                    <CardMedia> <img src={this.props.image} alt={''} width="96px" height="96px"/> </CardMedia>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5" component="h2">
-                            {this.props.name}
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
-                            {this.props.description}
-                        </Typography>
-                    </CardContent>
-                </Card>
-                <FormControlLabel value={this.props.value} control={<Radio color="primary"/>} label={this.props.value}/>
-            </div>
-        );
-    }
+      return (
+         <div>
+            <Card className={classes.templateCard}>
+               <CardMedia>
+                  {' '}
+                  <img src={this.props.image} alt={''} width="96px" height="96px" />{' '}
+               </CardMedia>
+               <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                     {this.props.name}
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                     {this.props.description}
+                  </Typography>
+               </CardContent>
+            </Card>
+            <FormControlLabel
+               value={this.props.value}
+               control={<Radio color="primary" />}
+               label={this.props.value}
+            />
+         </div>
+      );
+   }
 }
-  
+
 export default withStyles(styles)(Template);

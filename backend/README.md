@@ -9,17 +9,17 @@ express.js server, and template placeholder replacement and generation.
 
 **Direct testing of `convertTemplate` function:**
 
--  `cd backend`
--  `npm i`
--  `npm test`
+-   `cd backend`
+-   `npm i`
+-   `npm test`
 
 **Note:** This will generate file `test/generated-file.js`
 
 ### Testing the Conversion / Compression / Download of Templates through the `express` server using _Postman_ 📪:
 
--  `cd backend`
--  `npm i`
--  `node server/index.js`
+-   `cd backend`
+-   `npm i`
+-   `node server/index.js`
 
 ```
 POST to: http://localhost:5000/generate-file
