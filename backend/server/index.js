@@ -11,17 +11,19 @@ const liwgFs = require('../scripts/liwg-fs.js');
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 
-app.use(cors({ origin: "http://127.0.0.1:3000" }));
+app.use(cors({ origin: 'http://127.0.0.1:3000' }));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.text());
-app.use(express.urlencoded({ extended: false, }));
+app.use(express.urlencoded({ extended: false }));
 app.use(require('cookie-parser')());
-app.use(require('express-session')({
-    secret: 'my super amazing secret',
-    resave: false,
-    saveUninitialized: false
-}));
+app.use(
+    require('express-session')({
+        secret: 'my super amazing secret',
+        resave: false,
+        saveUninitialized: false,
+    })
+);
 
 // Passport middleware
 app.use(passport.initialize());
@@ -29,7 +31,6 @@ app.use(passport.session());
 
 app.use('/auth', require('./auth').router);
 app.use('/data', require('./data'));
-
 
 app.post('/generate-file', async (request, response) => {
     let dirName = uuidv4();
@@ -53,5 +54,5 @@ app.post('/generate-file', async (request, response) => {
 });
 
 app.listen(port, () => {
-    console.log(`App running on port ${port}.`)
+    console.log(`App running on port ${port}.`);
 });

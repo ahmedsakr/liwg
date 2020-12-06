@@ -19,6 +19,6 @@ module.exports.verifyLogin = (req, res, next) => {
 
     // User needs to login.
     res.redirect('/auth/linkedin/login');
-}
+};
 
 module.exports.router = router;

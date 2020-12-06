@@ -17,7 +17,7 @@ function readFile(file) {
 /** convertTemplate() utilizes Handlebar.js to replace placeholders in templates with data,
  *  indicated using {{name}} in the template. The purpose of this function is to replace .js
  *  template tags with data.
- * 
+ *
  * Parameters:
  *  data: JSON - The data being inserted into the template
  *  Note: data.template is a required attribue of the JSON object
@@ -27,17 +27,16 @@ exports.convertTemplate = function (data, template) {
         if (!template) {
             reject('No template provided.');
         }
-        readFile(template)
-        .then(templateContents => { 
+        readFile(template).then((templateContents) => {
             templateContents = Handlebars.compile(templateContents);
-            result = templateContents(data);
+            let result = templateContents(data);
             fs.writeFile(template, result, function (err) {
                 if (err) {
                     reject(err);
                 }
-                console.log()
+                console.log();
                 resolve(template);
             });
         });
     });
-}
+};

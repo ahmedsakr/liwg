@@ -4,7 +4,7 @@
 
 var archiver = require('archiver');
 var fs = require('fs');
-var rimraf = require("rimraf");
+var rimraf = require('rimraf');
 var ncp = require('ncp').ncp;
 ncp.limit = 16;
 
@@ -19,9 +19,9 @@ function copyTemplateFiles(source, destination) {
     return new Promise((resolve, reject) => {
         ncp(source, destination, function (error) {
             if (error) {
-                reject(error)
+                reject(error);
             } else {
-                resolve()
+                resolve();
             }
         });
     });
@@ -31,9 +31,9 @@ function removeDirectory(dirName) {
     return new Promise((resolve, reject) => {
         rimraf(dirName, (error) => {
             if (error) {
-                reject(error)
+                reject(error);
             } else {
-                resolve()
+                resolve();
             }
         });
     });
@@ -42,13 +42,12 @@ function removeDirectory(dirName) {
 function createDirectory(dirName) {
     return new Promise((resolve, reject) => {
         if (!fs.existsSync(dirName)) {
-            fs.mkdirSync(dirName)
-            resolve()
+            fs.mkdirSync(dirName);
+            resolve();
         } else {
             reject('Directory already exists');
         }
     });
-
 }
 
 function compressDirectory(src, out) {
@@ -57,9 +56,9 @@ function compressDirectory(src, out) {
 
     return new Promise((resolve, reject) => {
         archive
-        .directory(src, false)
-        .on('error', err => reject(err))
-        .pipe(stream);
+            .directory(src, false)
+            .on('error', (err) => reject(err))
+            .pipe(stream);
 
         stream.on('close', () => resolve());
         archive.finalize();

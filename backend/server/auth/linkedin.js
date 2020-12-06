@@ -12,14 +12,19 @@ const environment_variable = (env) => {
     }
 
     return process.env[env];
-} 
+};
 
-passport.use(new LinkedInStrategy({
-    clientID: environment_variable('CLIENT_ID'),
-    clientSecret: environment_variable('CLIENT_SECRET'), 
-    callbackURL: environment_variable('LINKEDIN_CALLBACK'),
-    scope: ['r_emailaddress', 'r_liteprofile'],
-}, ( access, refresh, profile, done) => done(null, profile)));
+passport.use(
+    new LinkedInStrategy(
+        {
+            clientID: environment_variable('CLIENT_ID'),
+            clientSecret: environment_variable('CLIENT_SECRET'),
+            callbackURL: environment_variable('LINKEDIN_CALLBACK'),
+            scope: ['r_emailaddress', 'r_liteprofile'],
+        },
+        (access, refresh, profile, done) => done(null, profile)
+    )
+);
 
 // Redirects the user to the LinkedIn login portal so we can activate
 // their session.
@@ -27,7 +32,8 @@ router.get('/login', passport.authenticate('linkedin'));
 
 // LinkedIn will invoke this callback when it is done authenticating
 // the user.
-router.get('/callback',
+router.get(
+    '/callback',
     passport.authenticate('linkedin', {
         successRedirect: environment_variable('LINKEDIN_SUCCESS'),
         failureRedirect: environment_variable('LINKEDIN_FAILED'),
