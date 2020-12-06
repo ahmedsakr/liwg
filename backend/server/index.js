@@ -1,4 +1,7 @@
+require('dotenv').config();
+
 const express = require('express');
+const passport = require('passport');
 const bodyParser = require('body-parser');
 const app = express();
 const port = 5000;
@@ -8,13 +11,25 @@ const liwgFs = require('../scripts/liwg-fs.js');
 const { v4: uuidv4 } = require('uuid');
 const path = require('path');
 
-app.use(cors());
+app.use(cors({ origin: "http://127.0.0.1:3000" }));
+app.use(express.json());
 app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended: true,
-    })
-);
+app.use(bodyParser.text());
+app.use(express.urlencoded({ extended: false, }));
+app.use(require('cookie-parser')());
+app.use(require('express-session')({
+    secret: 'my super amazing secret',
+    resave: false,
+    saveUninitialized: false
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/auth', require('./auth').router);
+app.use('/data', require('./data'));
+
 
 app.post('/generate-file', async (request, response) => {
     let dirName = uuidv4();
