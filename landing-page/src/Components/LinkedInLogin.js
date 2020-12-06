@@ -6,7 +6,7 @@ const LinkedInLogin = () => {
 
   return (
     <div>
-      <Button variant="contained" color="primary" startIcon={<FaLinkedin/>} href="/auth/linkedin">Sign in with LinkedIn</Button>
+      <Button variant="contained" color="primary" startIcon={<FaLinkedin/>} href="http://localhost:5000/auth/linkedin/login">Sign in with LinkedIn</Button>
     </div>
   );
   

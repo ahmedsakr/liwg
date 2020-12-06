@@ -1,4 +1,4 @@
-let converter = require('../generate-source-file.js');
+let converter = require('../scripts/generate-source-file.js');
 let data = {
     "template": "test-template.js",
     "name": "Alan",
@@ -15,7 +15,7 @@ let data = {
     ]
 }
 
-converter.convertTemplate(data)
+converter.convertTemplate(data, 'test/test-template.js')
 .then((file) => {
     console.log('Wrote converted template to: ', file);
 })
