@@ -16,7 +16,6 @@
   "devDependencies": {},
   "scripts": {
     "test": "node template-generation/test/test-template-generation.js",
-    "install":"npm install",
     "start": "node server/index.js",
     "test_1": "node test/test-template-generation.js"
   },
