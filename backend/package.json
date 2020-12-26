@@ -19,7 +19,9 @@
     "uuid": "^8.3.1"
   },
   "scripts": {
-    "test": "node test/test-template-generation.js"
+    "test": "node template-generation/test/test-template-generation.js",
+    "start": "node server/index.js",
+    "test_1": "node test/test-template-generation.js"
   },
   "author": "",
   "license": "ISC"
